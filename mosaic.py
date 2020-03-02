@@ -2,7 +2,7 @@ import cv2
 import sys
 import os
 import glob
-
+print(1)
 
 cascade_path = "/home/fujishima0514/fujishima/.local/lib/python3.5/site-packages/cv2/data/haarcascade_frontalface_default.xml"
 
