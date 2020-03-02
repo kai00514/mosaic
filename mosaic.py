@@ -86,13 +86,16 @@ if __name__ =="__main__":
         #print(image.shape)
 		#color = (0, 0, 255)
         basename = os.path.basename(fname)
-        output = os.path.join(output_dir ,basename)
+        output = glob.glob(os.path.join(output_dir ,basename))
         print(output)
-        glob_output = glob.glob(output)
+        #glob_output = glob.glob(output)
+        #print(glob_output)
+
 #        print(output)
       #  output = os.path.join("./out",basename)
       #  output2 = os.path.join("./output",basename)
-        output3 = os.path.join("./gray_out",basename)
+        #output3 = os.path.join("./gray_out",basename)
+        output3 = os.path.join(output_dir,basename)
 
         #for (x,y,w,h) in facerect:
         #    img = topical_mosaic(image,(x,y,x+w,y+h),10)
@@ -105,8 +108,8 @@ if __name__ =="__main__":
             #img_gray = img.copy()
            #gray_mosaic = image2gray(gray)
             tpcl_image = topical(rect,image)
-            gray_image = image2gray(tpcl_image)
-            mosaic_image = mosaic(gray_image)
+#            gray_image = image2gray(tpcl_image)
+            mosaic_image = mosaic(tpcl_image)
 #def topical_mosaic(img,rect,size):  
             #tpcl_mosaic = topical_mosaic(image, rect)
 
@@ -118,19 +121,16 @@ if __name__ =="__main__":
             #img2[y1:y2,x1:x2,2]=mosaic_gray # only mosai
 
 #debug####
-            print("debug shape")
-            print(img2[y1:y2,x1:x2,0].shape, mosaic_image.shape) 
+#            print("debug shape")
+#            print(img2[y1:y2,x1:x2,0].shape, mosaic_image.shape) 
 
-            img2[y1:y2,x1:x2,0]= mosaic_image # only mosai
-            img2[y1:y2,x1:x2,1]= mosaic_image # only mosai
-            img2[y1:y2,x1:x2,2]= mosaic_image # only mosai
+            img2[y1:y2,x1:x2,:]= mosaic_image # only mosai
             
             color = (0, 0, 255)
 
             #cv2.rectangle(img, tuple(rect[0:2]),tuple(rect[0:2]+rect[2:4]), color, thickness=2)
            # cv2.rectangle(gray_mosaic, tuple(rect[0:2]),tuple(rect[0:2]+rect[2:4]), color, thickness=2)
             print("complete")
-            print("outputted in " + output3)
       #  cv2.imwrite(output, img)
         #cv2.imwrite(output3,gray_mosaic)
             #cv2.imwrite(output_img_dir,img2)
